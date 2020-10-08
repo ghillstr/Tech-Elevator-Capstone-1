@@ -2,36 +2,27 @@ package com.techelevator;
 
 public class Slot extends Product {
 	
-	private int inventory = 5;
+	private int inventory;
 	
-	
-	public Slot(String location, int inventory) {
-	super (location);
-	this.inventory =inventory;
+	public Slot(String location) {
+		super (location);
+		this.inventory = 5;
 	}
 	
-	public int dispense() {
-		 if(item choosen);
-		 inventory = inventory - 1;
-		 return getInventory();
+	public int getInventoryNumber (String location) {
+		 if(item chosen) {
+			 inventory -= 1;
+		 }
+		 return inventory;
 	}
-	public String SoldOut() {
-		if (inventory < 0) {
-			return "Sold Out";
+	
+	public void SoldOut(int inventory) {
+		if (inventory <= 0) {
+			System.out.println("Sold out");
 		}
-		return Integer.toString(getInventory());
 	}
-	
 
 	public int getInventory() {
 		return inventory;
 	}
-
-	public void setInventory(int inventory) {
-		this.inventory = inventory;
-	}
-
-	
-		
-
 }
