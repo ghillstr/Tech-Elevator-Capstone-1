@@ -1,76 +1,55 @@
 package com.techelevator;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.math.BigDecimal;
 
 public class Product {
 
 	//private String location;
 	private String name;
-	private Integer price;
+	// Use BigDecimal to keep both values after the decimal point
+	// i.e. $1.50 instead of $1.5
+	private BigDecimal price;
 	private String type;
 
-//	public Product (String location, String name, Double price, String type) {
-//		this.location = location;
-//		this.name = name;
-//		this.price = price;
-//		this.type = type;
-//	}
-	
-	
+	// Split each line of input file into sections and identify them
+	public Product (String line) {
+		String[] sections = line.split("\\|");
 		
-	
-	
-	public Product (String name, String price, String type) throws FileNotFoundException {
-		
-		File inputFile = new File("vendingmachine.csv");
-		
+		this.location = sections[0];
+		this.name = sections[1];
+		this.price = new BigDecimal(sections[2]);
+		this.type = sections[3];
+	}
 
-		
-		try(Scanner fileScanner = new Scanner(inputFile)) {
-			while(fileScanner.hasNextLine()) {
-				
-				String line = fileScanner.nextLine();
-				
-
-				String[] sections = line.split("\\|");
-				System.out.println(sections[0] + sections[1]);
-				
-				
-				
-			this.name = sections[1];
-			//this.name = sections[1];
-			this.price = Integer.parseInt(sections[2]);
-			this.type = sections[3];
-			
-			System.out.println(name);
-		}
-	}}
+	// Override the toString method so we can print array elements in main method
+	@Override
+    public String toString() { 
+        return this.location + " " + this.name + " $" + this.price; 
+    }
 	
+	// State which message should be displayed when purchasing each type in main method
 	public void message (String type) {
 		if (type == "Chip") {
 			System.out.println("Crunch Crunch, Yum!");
 		} else if (type == "Candy") {
 			System.out.println("Munch Munch, Yum!");
 		} else if (type == "Drink") {
-			System.out.println("Glug Glub, Yum!");
+			System.out.println("Glug Glug, Yum!");
 		} else {
 			System.out.println("Chew Chew, Yum!");
 		}
 	}
 	
-//	public String getLocation() {
-//		return location;
-//	}
+	// Getters
+	public String getLocation() {
+		return location;
+	}
 
 	public String getName() {
 		return name;
 	}
 
-	public Integer getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 

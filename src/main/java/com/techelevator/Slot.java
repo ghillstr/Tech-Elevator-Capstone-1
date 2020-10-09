@@ -10,11 +10,11 @@ public class Slot extends Product {
 	}
 	
 	public int getInventoryNumber (String location) {
-		 if(item chosen) {
-			 inventory -= 1;
-		 }
-		 return inventory;
-	}
+		if(item chosen) {
+			inventory -= 1;
+		}
+		return inventory;
+   }
 	
 	public void SoldOut(int inventory) {
 		if (inventory <= 0) {
