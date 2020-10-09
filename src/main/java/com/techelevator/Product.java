@@ -2,7 +2,7 @@ package com.techelevator;
 
 
 
-public class Product {
+public abstract class Product {
 
 	
 	private String name;
@@ -28,17 +28,9 @@ public class Product {
         return this.name + " $" + this.price; 
     }
 	
-	// State which message should be displayed when purchasing each type in main method
-	public void message (String type) {
-		if (type == "Chip") {
-			System.out.println("Crunch Crunch, Yum!");
-		} else if (type == "Candy") {
-			System.out.println("Munch Munch, Yum!");
-		} else if (type == "Drink") {
-			System.out.println("Glug Glug, Yum!");
-		} else {
-			System.out.println("Chew Chew, Yum!");
-		}
+	public Product(String name, BigDecimal price) {
+		this.name = name;
+		this.price = price;
 	}
 	
 	// Getters
@@ -53,10 +45,15 @@ public class Product {
 	public Double getPrice() {
 		return price;
 	}
+}
+	
+	
+	  	
+	  	
 
-	public String getType() {
-		return type;
-	}
+
+
+
 
 
 	public int getQuantity() {
