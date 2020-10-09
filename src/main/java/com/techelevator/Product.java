@@ -1,13 +1,14 @@
 package com.techelevator;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Product {
 
-	private String location;
+	//private String location;
 	private String name;
 	private Integer price;
 	private String type;
@@ -19,32 +20,35 @@ public class Product {
 //		this.type = type;
 //	}
 	
-	File inputFile = new File("vendingmachine.csv");
 	
-//	List<Product> products = new ArrayList<Product>();
-	
-	try(Scanner fileScanner = new Scanner(inputFile)) {
-		while(fileScanner.hasNextLine()) {
-			
-			String line = fileScanner.nextLine();
-			
-//			if (line != "" || line != null) {
-			String[] sections = line.split("\\|");
-			System.out.println(sections[0] + sections[1]);
-		}	
 		
-		}
-	}
 	
-	public Product (String line) {
+	
+	public Product (String name, String price, String type) throws FileNotFoundException {
+		
+		File inputFile = new File("vendingmachine.csv");
+		
 
-			
-			this.location = sections[0];
+		
+		try(Scanner fileScanner = new Scanner(inputFile)) {
+			while(fileScanner.hasNextLine()) {
+				
+				String line = fileScanner.nextLine();
+				
+
+				String[] sections = line.split("\\|");
+				System.out.println(sections[0] + sections[1]);
+				
+				
+				
 			this.name = sections[1];
+			//this.name = sections[1];
 			this.price = Integer.parseInt(sections[2]);
 			this.type = sections[3];
+			
+			System.out.println(name);
 		}
-	}
+	}}
 	
 	public void message (String type) {
 		if (type == "Chip") {
@@ -58,15 +62,15 @@ public class Product {
 		}
 	}
 	
-	public String getLocation() {
-		return location;
-	}
+//	public String getLocation() {
+//		return location;
+//	}
 
 	public String getName() {
 		return name;
 	}
 
-	public Double getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 

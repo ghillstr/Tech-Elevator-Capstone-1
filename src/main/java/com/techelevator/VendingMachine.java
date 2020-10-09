@@ -24,21 +24,7 @@ public class VendingMachine {
 		Integer mainMenuChoice = Integer.parseInt(userInput);
 		
 	
-		File inputFile = new File("vendingmachine.csv");
-		String[] sections;
 		
-		try(Scanner fileScanner = new Scanner(inputFile)) {
-			while(fileScanner.hasNextLine()) {
-				
-				String line = fileScanner.nextLine();
-				sections = line.split("\\|");
-				if (mainMenuChoice == 1) {
-					System.out.println(sections[0] + " " + sections[1] + " " + "getInventory()" + " in stock");
-				}
-//				System.out.println(sections[0] + " " + sections[1]);
-			}
-		}	
-		System.out.println(sections[0]);
 		// Read input file and compose list of products
 
 //		System.out.println(products);
