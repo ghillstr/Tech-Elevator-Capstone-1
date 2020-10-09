@@ -1,30 +1,31 @@
 package com.techelevator;
 
-import java.math.BigDecimal;
+
 
 public class Product {
 
-	//private String location;
+	
 	private String name;
-	// Use BigDecimal to keep both values after the decimal point
-	// i.e. $1.50 instead of $1.5
-	private BigDecimal price;
+	private double price;
 	private String type;
+	private int quantity;
 
-	// Split each line of input file into sections and identify them
-	public Product (String line) {
-		String[] sections = line.split("\\|");
+	
+	
+
+	public Product (String name, double price, String type) {
 		
-		this.location = sections[0];
-		this.name = sections[1];
-		this.price = new BigDecimal(sections[2]);
-		this.type = sections[3];
-	}
+		this.name = name;
+		this.price = price;
+		this.type = type;
+		this.quantity = 5;
+		}
+	
 
 	// Override the toString method so we can print array elements in main method
 	@Override
     public String toString() { 
-        return this.location + " " + this.name + " $" + this.price; 
+        return this.name + " $" + this.price; 
     }
 	
 	// State which message should be displayed when purchasing each type in main method
@@ -41,20 +42,33 @@ public class Product {
 	}
 	
 	// Getters
-	public String getLocation() {
-		return location;
-	}
+	//public String getLocation() {
+	//	return location;
+	//}
 
 	public String getName() {
 		return name;
 	}
 
-	public BigDecimal getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
 	public String getType() {
 		return type;
 	}
+
+
+	public int getQuantity() {
+		
+		return quantity;
+	}
+
+
+	public int getQuantity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 
 }
