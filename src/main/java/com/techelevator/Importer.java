@@ -29,8 +29,7 @@ public class Importer {
     private void stocker (List<Product> productList, String slot, Product product) {
         for (int i = 0; i < 5; i++) {
             productList.add(product);
-            
-            productsInTheMachine.put(slot, productList);
+
         }
     }
 	
@@ -59,7 +58,7 @@ public class Importer {
                 
             } else if (slot.startsWith("D")) {
                 Product product = new Gum(name, price);
-                stocker (productList, slot, item);
+                stocker (productList, slot, product);
             }
 
         }
