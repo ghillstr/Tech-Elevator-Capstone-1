@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 
 public class Product {
 
-	//private String location;
+//	private String location;
 	private String name;
 	// Use BigDecimal to keep both values after the decimal point
 	// i.e. $1.50 instead of $1.5
 	private BigDecimal price;
-	private String type;
+//	private String type;
 
 	// Split each line of input file into sections and identify them
 	public Product (String line) {
@@ -20,6 +20,10 @@ public class Product {
 		this.price = new BigDecimal(sections[2]);
 		this.type = sections[3];
 	}
+	
+//	public Product (String location) {
+//		this.location = location;
+//	}
 
 	// Override the toString method so we can print array elements in main method
 	@Override

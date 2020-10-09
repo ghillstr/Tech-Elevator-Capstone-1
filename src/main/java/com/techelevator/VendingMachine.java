@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.math.BigDecimal;
 
 public class VendingMachine {
 
@@ -27,6 +28,7 @@ public class VendingMachine {
 		}	
 		
 		Slot mySlot = new Slot(null);
+
 		
 		// Welcome message
 		System.out.println("***********************************************************");
@@ -52,10 +54,54 @@ public class VendingMachine {
 			if (mainMenuChoice == 1) {
 				for (Product product : products) {
 					System.out.println(product + "      " + mySlot.getInventory() + " in stock");
-					// How do we print out the current inventory next to each product?
 				}
 			} else if (mainMenuChoice == 2) {
-					
+				System.out.println("To make a purchase, please insert money.");
+				System.out.println("This machine can accept whole dollar amounts only.");
+				System.out.print("Please enter amount >>> $");
+				String userMoneyInserted = keyboard.nextLine();
+				BigDecimal money = new BigDecimal(userMoneyInserted);
+				System.out.print("You have inserted $" + money + ". Would you like to insert more money? (y / n)");
+				
+				// Handle response to question about inserting money
+				
+				// Validate proper format of money inserted (whole dollar amount)
+				
+				System.out.println("---------------------------------------------");					
+				System.out.println("Please select a product from the list below.");
+				for (Product product : products) {
+					System.out.println(product + "      " + mySlot.getInventory() + " in stock");
+				}
+				System.out.println();
+				System.out.print("Enter the code of your selection. For example, you would enter \"B1\" for Moonpie. >>> ");
+				// How to allow them to enter either uppercase letter or lowercase letter?
+				String userProductSelected = keyboard.nextLine();
+				Product myProduct = new Product(userProductSelected);
+				
+				if (myProduct.getLocation().equals(userProductSelected)) {
+					System.out.print("Invalid product code. Please enter a valid code >>> ");
+					// How to read their new selection?
+				} else if (mySlot.getInventory() == 0) {
+					System.out.println("Product is sold out. Please select another product >>> ");
+					// How to use sold out message from Slot class?
+					// How to select another product?
+				} else if (money.compareTo(myProduct.getPrice()) < 0) {
+					System.out.println("Insufficient funds for selected product. Please select another product >>> ");
+					// Should we give option for them to add more money?
+				} else {
+
+				}
+				
+//			if product exists, inventory is sufficient, and money is sufficient	
+//				dispense product
+//				display message correlating to type of product
+//				display remaining money
+//				prompt to continue or finish shopping
+//				adjust inventory
+				
+				
+				
+				
 			} else if (mainMenuChoice == 3) {
 				System.out.println("Thank you for using the Vendo-matic 800!");
 				System.exit(1);
