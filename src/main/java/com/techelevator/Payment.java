@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.math.BigDecimal;
+
 public class Payment {
 	
 	private int paymentAmount;
@@ -36,22 +38,22 @@ public class Payment {
 	
 	
 	//calculate change in coins and print it out to customer
-	public void changeInCoins(int change) {
+	public void changeInCoins(BigDecimal change) {
 	int quarters = 0;
 	int dimes = 0;
 	int nickels = 0;
-	
-	while (change >= 25) {
+	double customerChange = change.doubleValue() *100;
+	while (customerChange >= 25) {
 		quarters++;
-		change-=25;
+		customerChange-=25;
 	}
-	while (change >= 10) {
+	while (customerChange >= 10) {
 		dimes++;
-		change-=10;
+		customerChange-=10;
 	}
-	while (change >= 5) {
+	while (customerChange >= 5) {
 		nickels++;
-		change-=5;
+		customerChange-=5;
 	}
 	
 	System.out.println("Your chnage is "+quarters+" quarters, "+ dimes+" dimes, "+nickels+ " nickels.");

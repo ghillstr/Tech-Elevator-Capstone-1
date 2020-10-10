@@ -2,22 +2,21 @@ package com.techelevator;
 
 
 
-public abstract class Product {
+public class Product {
 
 	
 	private String name;
 	private double price;
-	private String type;
+	
 	private int quantity;
 
 	
 	
 
-	public Product (String name, double price, String type) {
+	public Product (String name, double price) {
 		
 		this.name = name;
 		this.price = price;
-		this.type = type;
 		this.quantity = 5;
 		}
 	
@@ -28,10 +27,7 @@ public abstract class Product {
         return this.name + " $" + this.price; 
     }
 	
-	public Product(String name, BigDecimal price) {
-		this.name = name;
-		this.price = price;
-	}
+	
 	
 	// Getters
 	//public String getLocation() {
@@ -45,7 +41,7 @@ public abstract class Product {
 	public Double getPrice() {
 		return price;
 	}
-}
+
 	
 	
 	  	
@@ -62,10 +58,7 @@ public abstract class Product {
 	}
 
 
-	public int getQuantity() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 	
 
 }

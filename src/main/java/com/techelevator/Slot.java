@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class Slot extends Product {
+public class Slot  {
 	
 	private int inventory;
 	

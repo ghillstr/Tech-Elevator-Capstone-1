@@ -11,14 +11,28 @@ import java.util.Scanner;
 
 public class Inventory {
 	
+	//private int myInventory;
 	private Product product;
 	//private List <String> slotNumber = new ArrayList <>();
 	
 	public Map <String, Product> inventoryMap = new HashMap <>();
-	//Product = name, price, type
+	//Product = name, price
 	
 	
 	
+	
+//	public Inventory(int myInventory) {
+//		this.myInventory = myInventory;
+//	}
+	
+	
+	
+//	
+//	public int getMyInventory() {
+//		return myInventory;
+//	}
+//	
+//	
 	
 	public void getQuantity(String slot ) {
 		Product value = inventoryMap.get(slot);
@@ -33,9 +47,7 @@ public class Inventory {
 		return product;
 	}
 
-	public List<String> getSlotNumber() {
-		return slotNumber;
-	}
+	
 
 	
 	public void setInventory() throws NumberFormatException, FileNotFoundException {
@@ -47,9 +59,9 @@ public class Inventory {
 				String line = fileScanner.nextLine();
 				
 				String[] a = line.split("\\|");
-				product = new Product (a[1], Double.parseDouble(a[2]), a[3]);
+				product = new Product (a[1], Double.parseDouble(a[2]));
 				inventoryMap.put(a[0], product);
-				//slotNumber.add(a[0]);
+		
 			}
 		}	
 	}

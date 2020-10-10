@@ -11,21 +11,10 @@ import java.util.Scanner;
 
 public class VendingMachine {
 
-	public static void main (String[] args) throws FileNotFoundException {
+	
 		
 		
-		// Import data file
-		File inputFile = new File("vendingmachine.csv");
-
-		// Create new ArrayList to store information from data file
-		List<Product> products = new ArrayList<Product>();
-		
-		try(Scanner fileScanner = new Scanner(inputFile)) {
-			while(fileScanner.hasNextLine()) {
-				String line = fileScanner.nextLine();
-				products.add(new Product(line));
-			}
-		}	
+	
 		
 		Slot mySlot = new Slot(null);
 		Menu mainMenu = new Menu ("main");
