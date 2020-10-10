@@ -14,15 +14,13 @@ import java.math.BigDecimal;
 
 public class VendingMachine {
 	
-	private List<Product> cart = new ArrayList<Product>();
+	//private List<Product> cart = new ArrayList<Product>();
 	private Map<String, Inventory> inventoryMap = new HashMap<>();
-	private BigDecimal customerBalance = new BigDecimal(0);
+	private BigDecimal deposit = new BigDecimal(0);
 	private BigDecimal cartBalance = new BigDecimal(0);
-	private List<Product> soldProducts = new ArrayList<Product> ();
+	private List<Product> soldProduct = new ArrayList<Product> ();
 	
-	public VendingMachine () {
-		
-	}
+	
 	
 	public void setInventory() throws NumberFormatException, FileNotFoundException {
 
@@ -79,47 +77,88 @@ public class VendingMachine {
 	// How do we connect this to Payment class?
 	// How and where do we handle change?
 	// How and where do we display the product type message
-	public void addMoney(int paymentAmount) {
-		setCustomerBalance((getCustomerBalance().add(new BigDecimal(cashFed))));
+	//SAME AS CUSTOMERMONEY METHOD IN PAYMENT CLASS
+	/*public void addMoney(int paymentAmount) {
+		setCustomerBalance((().add(new BigDecimal(cashFed))));
 		System.out.println("Your balance is: $" + getCustomerBalance().toString());
 		// add cashFed to log
+		 * 
+		 * 
+		 * 
+		 * public void addMoney(int input) throws IOException {
+		setDeposit((getDeposit().add(new BigDecimal(input))));
+		System.out.println("Transaction Balance is now : $" + getTransactionBalance().toString());
+		logger.addToLog("FEED MONEY:", new BigDecimal(input), getTransactionBalance());
 	}
+	}*/
+	public void addToCustomerMoney(int moneyInput) {
+		
+		if(moneyInput==1) {
+			getDeposit().add(new BigDecimal(1.00));
+		}else if(moneyInput==2) {
+			getDeposit().add(new BigDecimal(2.00));
+			}else if(moneyInput==5) {
+			getDeposit().add(new BigDecimal(5.00));
+			}else if(moneyInput==10) {
+			getDeposit().add(new BigDecimal(10.00));
+			}
+		
+		System.out.println("Your balance is "+ deposit+", whatwould you like to purchase?");
+		//logger.addToLog("FEED MONEY:", new BigDecimal(moneyInput), getDeposit());
+		}
 	
-	public String selectProduct (String selectedProduct) {
+	public void selectProduct (String selectedProduct) {
 		
 		String selectedProductQuantity = getInventoryMap().get(selectedProduct).getQuantity();
 		BigDecimal selectedProductPrice = getInventoryMap().get(selectedProduct).getMyProduct().getPrice();
+		Product temp = getInventoryMap().get(selectedProduct).getMyProduct();
 		
-		if (!selectedProductQuantity.equals("Sold out!") && getCustomerBalance().compareTo(selectedProductPrice) >= 0) {
+				if (!selectedProductQuantity.equals("Sold out!") && getDeposit().compareTo(selectedProductPrice) >= 0) {
 			
-			cart.add(getInventoryMap().get(selectedProduct).getMyProduct());
+			//cart.add(getInventoryMap().get(selectedProduct).getMyProduct());
 			
 			getInventoryMap().get(selectedProduct).decreaseInventory();
 			
-			setCustomerBalance(getCustomerBalance().subtract(selectedProductPrice));
+			setDeposit(getDeposit().subtract(selectedProductPrice));
 			
-			cartBalance = cartBalance.add(selectedProductPrice);
+		
+			
+			//PRINT THE MESSAGE YUM YUM
+			
+			//cartBalance = cartBalance.add(selectedProductPrice);
 			
 			// connect to logger here
+			/*
+			 * String selectedItemQuantity = getStock().get(selectedItem).getQuantity();
+		BigDecimal selectedItemPrice = getStock().get(selectedItem).getMyItem().getItemPrice();
+
+		if (!selectedItemQuantity.equals("Sold Out") && getTransactionBalance().compareTo(selectedItemPrice) >= 0) {
+
+			cart.add(getStock().get(selectedItem).getMyItem());
+			 */
 			
-			return "You have purchased one " + getInventoryMap().get(selectedProduct).getMyProduct().getName() + ". Your remaining balance is $" + getCustomerBalance();
+			System.out.println( "You have purchased one " + getInventoryMap().get(selectedProduct).getMyProduct().getName() + ". Your remaining balance is $" + getDeposit());
+			temp.typeMessage();
+			
 			
 		} else if (getInventoryMap().containsKey(selectedProduct.toUpperCase()) && selectedProductQuantity.equals("Sold out!")) {
-			return "Sorry, this item is sold out. Please select another item.";
-		} else if (getCustomerBalance().compareTo(selectedProductPrice) < 0) {
-			return "Sorry, you do not have enough money to purchase this product. Please enter another selection or feed more money.";
+			System.out.println( "Sorry, this item is sold out. Please select another item.");
+		} else if (getDeposit().compareTo(selectedProductPrice) < 0) {
+			System.out.println ("Sorry, you do not have enough money to purchase this product. Please enter another selection or feed more money.");
 		} else {
-			return "Sorry, that is not a valid selection. Please make another selection.";	
+			System.out.println( "Sorry, that is not a valid selection. Please make another selection.");	
 		}
 	}
 
-	public void finishTransactionAndKeepTrackForSalesReport () {
-		for (Product each : cart) {
-			soldProducts.add(each);
-		} while (cart.size() > 0) {
-			cart.remove(0);
-		}
-	}
+
+
+//	public void finishTransactionAndKeepTrackForSalesReport () {
+//		for (Product each : cart) {
+//			soldProducts.add(each);
+//		} while (cart.size() > 0) {
+//			cart.remove(0);
+//		}
+//	}
 	
 	public Map<String, Inventory> getInventoryMap() {
 		return inventoryMap;
@@ -129,21 +168,21 @@ public class VendingMachine {
 		this.inventoryMap = inventoryMap;
 	}
 	
-	public BigDecimal getCustomerBalance() {
-		return customerBalance;
+	public BigDecimal getDeposit() {
+		return deposit;
 	}
 
-	public void setCustomerBalance(BigDecimal customerBalance) {
-		this.customerBalance = customerBalance;
-	}
+	public void setDeposit(BigDecimal customerBalance) {
+		this.deposit = deposit;
+		}
 
-	public BigDecimal getCartBalance() {
-		return cartBalance;
-	}
+//	public BigDecimal getCartBalance() {
+//		return cartBalance;
+//	}
 
-	public void setCartBalance(BigDecimal cartBalance) {
-		this.cartBalance = cartBalance;
-	}
+//	public void setCartBalance(BigDecimal cartBalance) {
+//		this.cartBalance = cartBalance;
+//	}
 	
 	public List<Product> getSoldProducts() {
 		return soldProducts;
