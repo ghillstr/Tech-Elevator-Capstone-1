@@ -1,20 +1,18 @@
 package com.techelevator;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Menu {
 	//var
 	private String title;
-	private List<String>choices;
-	public Scanner keyboard = new Scanner(System.in);
+	private Map<Integer, String> choices;
 	
 	//constructor
 	public Menu(String title) {
 	this.title = title;
-	choices = new ArrayList<>();
+	choices = new HashMap<Integer, String>();
 	}
 	
 	//getters
@@ -22,30 +20,21 @@ public class Menu {
 		return title;
 	}
 
-	public List<String> getChoices() {
+	public Map<Integer, String> getChoices() {
 		return choices;
 	}
 
-	public Scanner getKeyboard() {
-		return keyboard;
-	}
-
-	
 	//method to add to array menu
-	public void addChoices(String addition) {
-		choices.add(addition);
+	public void addChoices(Integer intAddition, String stringAddition) {
+		choices.put(intAddition, stringAddition);
 	}
 	
-	
-	
-	public void userChoise(int choiceInt) {
+	public void userChoice(int choiceInt) {
 		if(choiceInt <= 0 || choiceInt>choices.size()) {
 			System.out.println("Incorrect input.");
 			return;
 		}
 	}
-
-
 }
 	
 	
