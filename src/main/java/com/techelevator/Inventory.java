@@ -10,7 +10,7 @@ public class Inventory {
 	private int quantity = 5;
 	private String location;
 	
-	public Map<String, Product> inventoryMap = new HashMap<>();
+//	public Map<String, Product> inventoryMap = new HashMap<>();
 
 //	public void getQuantity(String slot) {
 //		Product value = inventoryMap.get(slot);

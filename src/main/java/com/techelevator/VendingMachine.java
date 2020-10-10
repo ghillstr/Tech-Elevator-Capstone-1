@@ -20,9 +20,8 @@ public class VendingMachine {
 	private BigDecimal cartBalance = new BigDecimal(0);
 	private List<Product> soldProducts = new ArrayList<Product> ();
 	
-	
-	public VendingMachine (Map<String, Inventory> inventoryMap) {
-		this.inventoryMap = inventoryMap;
+	public VendingMachine () {
+		
 	}
 	
 	public void setInventory() throws NumberFormatException, FileNotFoundException {
@@ -61,11 +60,20 @@ public class VendingMachine {
 		}
 	}
 	
-	public void displayProduct () {
+//	public void displayProduct () {
+//		for (String key : getInventoryMap().keySet()) {
+//			Inventory myInventory = getInventoryMap().get(key);
+//			System.out.println(myInventory.getLocation() + " " + myInventory.getMyProduct().getName() + " " + myInventory.getMyProduct().getPrice() + " " + myInventory.getQuantity() + " in stock");
+//		}
+//	}
+
+	public String displayProduct () {
+		String result = "";
 		for (String key : getInventoryMap().keySet()) {
 			Inventory myInventory = getInventoryMap().get(key);
-			System.out.println(myInventory.getLocation() + " " + myInventory.getMyProduct().getName() + " " + myInventory.getMyProduct().getPrice() + " " + myInventory.getQuantity() + " in stock");
+			result += myInventory.getLocation() + " " + myInventory.getMyProduct().getName() + " " + myInventory.getMyProduct().getPrice() + " " + myInventory.getQuantity() + " in stock";
 		}
+		return result;
 	}
 	
 	// How do we connect this to Payment class?
