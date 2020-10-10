@@ -15,15 +15,20 @@ public class Payment {
 //		change = 0;
 //	}
 
+	public Payment (price, paymentAmount) {
+		
+	}
 	
-	//getter
+	//getters and setters
 	public int getPaymentAmount() {
 		return paymentAmount;
 	}
 	public BigDecimal getDeposit() {
 		return deposit;
 	}
-
+	public void setDeposit(BigDecimal deposit) {
+		this.deposit = deposit;
+	}
 	
 	//checking the amount
 	public boolean isItValid() {
@@ -38,8 +43,6 @@ public class Payment {
 		change = paymentAmount-amountToWithdraw;
 		return change;
 	}
-	
-	
 	
 	//calculate change in coins and print it out to customer
 	public void changeInCoins(BigDecimal change) {
@@ -75,13 +78,5 @@ public class Payment {
 	else if(money==10) {
 		deposit=deposit.add(new BigDecimal(10.00));}
 	System.out.println("Your balance is "+ deposit+", whatwould you like to purchase?");
-
-
-	
-	
-	
-	
-	
-	
-
+	}
 }

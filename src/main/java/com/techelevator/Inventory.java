@@ -1,15 +1,15 @@
 package com.techelevator;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Inventory {
 
-	private Product product;
+	private Product myProduct;
+	private int quantity = 5;
+	private String location;
+	
 	public Map<String, Product> inventoryMap = new HashMap<>();
 
 //	public void getQuantity(String slot) {
@@ -18,37 +18,51 @@ public class Inventory {
 //		System.out.println("inv for product selected " + invNum);
 //	}
 
-	public Product getProduct() {
-		return product;
+	public Inventory (String location, String name, BigDecimal price, String type) {
+		this.location = location;
+		myProduct = new Product (name, price, type);
 	}
+	
+//	public Product getProduct() {
+//		return product;
+//	}
 
-	public void setInventory() throws NumberFormatException, FileNotFoundException {
 
-		File inputFile = new File("vendingmachine.csv");
-		try (Scanner fileScanner = new Scanner(inputFile)) {
-			while (fileScanner.hasNextLine()) {
-				String line = fileScanner.nextLine();
-				if (!line.isEmpty()) {
-					String[] a = line.split("\\|");
-
-					product = new Product(a[1], new BigDecimal(a[2]));
-					inventoryMap.put(a[0], product);
-
-				}
-			}
-		}}
+	
+	public void decreaseInventory () {
+		quantity -= 1;
+	}
 		
-		public String getProductName(String slotLocationNumber) {
-			return inventoryMap.get(slotLocationNumber).getName();
-		}
-		public BigDecimal getProductPrice(String slotLocationNumber) {
-			return inventoryMap.get(slotLocationNumber).getPrice();
-		}
-		public String getProductQuantity(String slotLocationNumber) {
-			return inventoryMap.get(slotLocationNumber).getQuantity();
-		}
-		public Product getProduct(String slotLocationNumber) {
-			return inventoryMap.get(slotLocationNumber);
+//		public String getProductName(String slotLocationNumber) {
+//			return inventoryMap.get(slotLocationNumber).getName();
+//		}
+//		public BigDecimal getProductPrice(String slotLocationNumber) {
+//			return inventoryMap.get(slotLocationNumber).getPrice();
+//		}
+//		public String getProductQuantity(String slotLocationNumber) {
+//			return inventoryMap.get(slotLocationNumber).getQuantity();
+//		}
+//		public Product getProduct(String slotLocationNumber) {
+//			return inventoryMap.get(slotLocationNumber);
+//	}
+
+	public Product getMyProduct() {
+		return myProduct;
 	}
 
+	public String getQuantity() {
+		if (quantity < 1) {
+			return "Sold out!";
+		} else {
+			return String.valueOf(quantity);
+		}
+	}
 
+	public String getLocation() {
+		return location;
+	}
+
+//	public Map<String, Product> getInventoryMap() {
+//		return inventoryMap;
+//	}
+}

@@ -4,24 +4,32 @@ import java.math.BigDecimal;
 
 public class Product {
 
-
 	//var
 	private String name;
 	private BigDecimal price;
-	private int quantity;
-
-	
+	private String type;
 	
 	//constructor
-	public Product (String name, BigDecimal price) {	
+	public Product (String name, BigDecimal price, String type) {	
 		this.name = name;
 		this.price = price;
-		this.quantity = 5;
-	
+		this.type = type;
+	}
+
+	public String typeMessage () {
+		if (type.equals("Chip")) {
+			return "Crunch Crunch, Yum!";
+		} else if (type.equals("Gum")) {
+			return "Chew Chew, Yum!";
+		} else if (type.equals("Drink")) {
+			return "Glug Glug, Yum!";
+		} else if (type.equals("Candy")) {
+			return "Munch Munch, Yum!";
+		} else {
+			return "";
+		}
 	}
 	
-	
-
 	// Override the toString method so we can print array elements in main method
 	@Override
     public String toString() { 
@@ -35,12 +43,9 @@ public class Product {
 	public BigDecimal getPrice() {
 		return price;
 	}
-	
-	public int getQuantity() {
-		return quantity;
-	}
-	
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+
+	public String getType() {
+		return type;
+
 	}
 }

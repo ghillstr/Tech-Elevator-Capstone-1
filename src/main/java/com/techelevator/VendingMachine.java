@@ -14,28 +14,67 @@ import java.math.BigDecimal;
 
 public class VendingMachine {
 	
+	private List<Product> cart = new ArrayList<Product>();
+	private Map<String, Inventory> inventoryMap = new HashMap<>();	
 	
 	
-	private Map<String, Product> inventoryMap = new HashMap<>();	
-	
-	
-	public VendingMachine( Map<String, Product> inventoryMap) {
+	public VendingMachine (Map<String, Inventory> inventoryMap) {
 		this.inventoryMap = inventoryMap;
 	}
 	
-	public void showInventoryToCustomer() {
-		for(Map.Entry <String, Product> value : inventoryMap.entrySet()) {
-			if(value.getValue().getQuantity()==0) {
-			System.out.println(value.getKey()+ "Out of stock");
-			}else {
-				System.out.println(value.getKey() + " "+ value.getValue().getProductName() + " "+ value.getValue().getProductPrice());
+	public void setInventory() throws NumberFormatException, FileNotFoundException {
+
+		// Check to make sure input file exists
+		File inputFile = new File("vendingmachine.csv");
+		try (Scanner fileScanner = new Scanner(inputFile)) {
+			while (fileScanner.hasNextLine()) {
+				String line = fileScanner.nextLine();
+				if (!line.isEmpty()) {
+					String[] a = line.split("\\|");
+
+					Inventory myInventory = new Inventory(a[0], a[1], new BigDecimal(a[2]), a[3]);
+					inventoryMap.put(a[0], myInventory);
+
+				}
 			}
 		}
+	}
 	
+	public Map<String, Inventory> getInventoryMap() {
+		return inventoryMap;
+	}
 	
+	public void setInventoryMap(Map<String, Inventory> inventoryMap) {
+		this.inventoryMap = inventoryMap;
+	}
 	
+	public void showInventoryToCustomerAndKeepTrackForSalesReport() {
+		Inventory inStock;
+		int sold;
+		
+		for(String key : inventoryMap.keySet()) {
+			inStock = inventoryMap.get(key);
+			if(inStock.getQuantity().equals("Sold out!")) {
+				sold = 5;
+				System.out.println("Sold out!");
+			}else {
+				sold = 5 - Integer.valueOf(inStock.getQuantity());
+				System.out.println(inStock.getQuantity());
+			}
+		}
+	}
 	
-// display menu
+	public void displayProduct () {
+		for (String key : getInventoryMap().keySet()) {
+			Inventory myInventory = getInventoryMap().get(key);
+			System.out.println(myInventory.getLocation() + " " + myInventory.getMyProduct().getName() + " " + myInventory.getMyProduct().getPrice() + " " + myInventory.getQuantity() + " in stock");
+		}
+	}
+	
+	public String selectProduct (String selectedProduct) {
+		
+	}
+	// display menu
 // accept money
 // dispense product
 // return change
@@ -55,6 +94,10 @@ public class VendingMachine {
 		
 	}
 	
+
+
+
+
 	private List<Product> myProduct = new ArrayList<>() {
 		
 	}
