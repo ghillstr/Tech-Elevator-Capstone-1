@@ -11,64 +11,37 @@ import java.util.Scanner;
 import java.math.BigDecimal;
 
 public class VendingMachine {
+	
+// display menu
+// accept money
+// dispense product
+// return change
 
-	public static void main (String[] args) throws FileNotFoundException {
+//	Menu main = new Menu("main");
+//	// should contain a list of options
+//	main.addChoices("(1) Option 1");
+//	
+	
+//variables
+//constructor
+	instantiate inventory
+	
+	
+	public VendingMachine (String[] names, double[] prices, inventory) {
+		this.product = product;
+		this.inventory = inventory;
+	}
+	
+	private List<Product> myProduct = new ArrayList<>() {
 		
-		
-//		// Import data file
-//		File inputFile = new File("vendingmachine.csv");
-//
-//		// Create new ArrayList to store information from data file
-//		List<Product> products = new ArrayList<Product>();
-//		
-//		try(Scanner fileScanner = new Scanner(inputFile)) {
-//			while(fileScanner.hasNextLine()) {
-//				String line = fileScanner.nextLine();
-//				products.add(new Product(line));
-//			}
-//		}	
-
-		// Create new ArrayList to store information from data file
-		List<Product> products = new ArrayList<Product>();
-		
-		try(Scanner fileScanner = new Scanner(inputFile)) {
-			while(fileScanner.hasNextLine()) {
-				String line = fileScanner.nextLine();
-				products.add(new Product(line));
-			}
-		}	
-		
-		Slot mySlot = new Slot(null);
-		Menu mainMenu = new Menu ("main");
-		
-		mainMenu.addChoices("\n(1) Display Vending Machine Items");
-		mainMenu.addChoices("(2) Purchase");
-		mainMenu.addChoices("(3) Exit");
-		
-		
-		// Welcome message
-		System.out.println("***********************************************************");
-		System.out.println("Welcome to the Vendo-matic 800, an Umbrella Corp. product.");
-		System.out.println("***********************************************************");
-		System.out.println();		
-		System.out.print("Please select an option from the list below:");
-		System.out.println(mainMenu);
-		//System.out.println("\n(1) Display Vending Machine Items");
-		//System.out.println("(2) Purchase");
-		//System.out.println("(3) Exit");
-		System.out.println();
-		System.out.print("Enter selection here >>> ");
-		
-		// Ask user for option from main menu
-		
-		Scanner keyboard = new Scanner(System.in);
-		
+	}
+	
 		try { 
-			
+			Scanner keyboard = new Scanner(System.in);
 			String userInputMainMenu = keyboard.nextLine();
 			Integer mainMenuChoice = Integer.parseInt(userInputMainMenu);
 			
-			mainMenu.userChoise(mainMenuChoice);
+			mainMenu.userChoice(mainMenuChoice);
 			
 			
 			if (mainMenuChoice == 1) {
@@ -81,7 +54,10 @@ public class VendingMachine {
 				System.out.print("Please enter amount >>> $");
 				String userMoneyInserted = keyboard.nextLine();
 				BigDecimal money = new BigDecimal(userMoneyInserted);
-				System.out.print("You have inserted $" + money + ". Would you like to insert more money? (y / n)");
+				
+				if 
+				
+				System.out.print("You have inserted $" + money);
 				
 				// Handle response to question about inserting money
 				

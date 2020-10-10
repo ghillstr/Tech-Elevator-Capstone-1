@@ -1,17 +1,16 @@
 package com.techelevator;
 
-import java.math.BigDecimal;
-
-		public class Drink extends Product {
+public class Drink extends Product {
 	
-				public Drink(String name, BigDecimal price) {
-						super(name, price);
-					}
-					public String getMessage() {
-							return "Glug Glug, Yum!";
+	public Drink(String name, double price) {
+		super(name, price);
+	}
+	
+	public String getMessage() {
+		return "Glug Glug, Yum!";
 		
-						}
-					}
+	}
+}
 	
 
 
