@@ -16,17 +16,17 @@ public class Product {
 		this.type = type;
 	}
 
-	public String typeMessage () {
+	public void typeMessage () {
 		if (type.equals("Chip")) {
-			return "Crunch Crunch, Yum!";
+			System.out.println( "Crunch Crunch, Yum!");
 		} else if (type.equals("Gum")) {
-			return "Chew Chew, Yum!";
+			System.out.println( "Chew Chew, Yum!");
 		} else if (type.equals("Drink")) {
-			return "Glug Glug, Yum!";
+			System.out.println("Glug Glug, Yum!");
 		} else if (type.equals("Candy")) {
-			return "Munch Munch, Yum!";
+			System.out.println( "Munch Munch, Yum!");
 		} else {
-			return "";
+			System.out.println( "");
 		}
 	}
 	
