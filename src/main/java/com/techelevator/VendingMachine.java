@@ -6,11 +6,34 @@ import java.io.IOException;
 import java.lang.NumberFormatException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.math.BigDecimal;
 
 public class VendingMachine {
+	
+	
+	
+	private Map<String, Product> inventoryMap = new HashMap<>();	
+	
+	
+	public VendingMachine( Map<String, Product> inventoryMap) {
+		this.inventoryMap = inventoryMap;
+	}
+	
+	public void showInventoryToCustomer() {
+		for(Map.Entry <String, Product> value : inventoryMap.entrySet()) {
+			if(value.getValue().getQuantity()==0) {
+			System.out.println(value.getKey()+ "Out of stock");
+			}else {
+				System.out.println(value.getKey() + " "+ value.getValue().getProductName() + " "+ value.getValue().getProductPrice());
+			}
+		}
+	
+	
+	
 	
 // display menu
 // accept money
@@ -24,12 +47,12 @@ public class VendingMachine {
 	
 //variables
 //constructor
-	instantiate inventory
 	
 	
-	public VendingMachine (String[] names, double[] prices, inventory) {
-		this.product = product;
-		this.inventory = inventory;
+	
+	//public VendingMachine (String[] names, double[] prices, inventory) {
+		//this.product = product;
+		
 	}
 	
 	private List<Product> myProduct = new ArrayList<>() {

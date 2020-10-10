@@ -1,26 +1,27 @@
 package com.techelevator;
 
+import java.math.BigDecimal;
+
 public class Product {
 
 
-public class Product {
-
-	
+	//var
 	private String name;
-	private double price;
-	
+	private BigDecimal price;
 	private int quantity;
 
 	
 	
-
-	public Product (String name, double price) {
-		
+	//constructor
+	public Product (String name, BigDecimal price) {	
 		this.name = name;
 		this.price = price;
 		this.quantity = 5;
+	
 	}
 	
+	
+
 	// Override the toString method so we can print array elements in main method
 	@Override
     public String toString() { 
@@ -31,7 +32,7 @@ public class Product {
 		return name;
 	}
 
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 	

@@ -6,19 +6,22 @@ public class Payment {
 	
 	private int paymentAmount;
 	private int change;
-
+	private BigDecimal deposit = new BigDecimal(0.00).setScale(2);
 	
 	
-	//constructor , payment amount in $1,2,5,10
-	public Payment(int paymentAmount) {
-		this.paymentAmount = paymentAmount * 100;
-		change = 0;
-	}
+//	//constructor , payment amount in $1,2,5,10
+//	public Payment(int paymentAmount) {
+//		this.paymentAmount = paymentAmount * 100;
+//		change = 0;
+//	}
 
 	
 	//getter
 	public int getPaymentAmount() {
 		return paymentAmount;
+	}
+	public BigDecimal getDeposit() {
+		return deposit;
 	}
 
 	
@@ -35,6 +38,7 @@ public class Payment {
 		change = paymentAmount-amountToWithdraw;
 		return change;
 	}
+	
 	
 	
 	//calculate change in coins and print it out to customer
@@ -59,6 +63,21 @@ public class Payment {
 	System.out.println("Your chnage is "+quarters+" quarters, "+ dimes+" dimes, "+nickels+ " nickels.");
 
 	}
+
+	public void customerMoney(int money) {
+	if(money==1) {
+		deposit=deposit.add(new BigDecimal(1.00));
+		
+	}else if(money==2) {
+		deposit=deposit.add(new BigDecimal(2.00));}
+	else if(money==5) {
+		deposit=deposit.add(new BigDecimal(5.00));}
+	else if(money==10) {
+		deposit=deposit.add(new BigDecimal(10.00));}
+	System.out.println("Your balance is "+ deposit+", whatwould you like to purchase?");
+
+
+	
 	
 	
 	
