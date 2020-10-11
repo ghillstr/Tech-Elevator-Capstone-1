@@ -14,7 +14,7 @@ public class Menu {
 		VendingMachine myVendingMachine = new VendingMachine();
 		boolean isMainMenuComplete = false;
 		boolean isSubMenuComplete = false;
-		boolean customerExit = false;
+		//boolean customerExit = false;
 		String product = "";
 		ChangeBackToCustomer myChange = new ChangeBackToCustomer();
 
@@ -36,10 +36,12 @@ public class Menu {
 
 				if (input1.equals("1")) {
 					System.out.println(myVendingMachine.displayProduct());
+					isMainMenuComplete = false;
+					isSubMenuComplete = true;
 				} else if (input1.equals("2")) {
 					isMainMenuComplete = true;
 					isSubMenuComplete = false;
-					;
+				
 				} else if (input1.equals("3")) {
 					System.out.println("Thank you for the using the Vendo-matic 800!");
 					System.exit(1);

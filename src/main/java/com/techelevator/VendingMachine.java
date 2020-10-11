@@ -18,7 +18,7 @@ public class VendingMachine {
 	private Map<String, Inventory> inventoryMap = new HashMap<>();
 	private BigDecimal deposit = new BigDecimal(0);
 	private BigDecimal machineBalance = new BigDecimal(0);
-	private List<Product> soldProduct = new ArrayList<Product> ();
+	//private List<Product> soldProduct = new ArrayList<Product> ();
 	
 	
 	
