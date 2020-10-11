@@ -24,6 +24,14 @@ public class Trash {
 //	}
 //}
 
+//	public Map<String, Product> inventoryMap = new HashMap<>();
+
+//	public void getQuantity(String slot) {
+//		Product value = inventoryMap.get(slot);
+//		int invNum = value.getQuantity();
+//		System.out.println("inv for product selected " + invNum);
+//	}
+	
 
 //
 //
@@ -163,4 +171,56 @@ public class Trash {
 }
 }*/
 
+//	private String BuildLogEntryString(String event, BigDecimal startingBalance, BigDecimal finalBalance) {
+//	String date = (new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new Date()));
+//	NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
+//	String startingBalanceString = (numberFormat.format(startingBalance.doubleValue()));
+//	String finalBalanceString = (numberFormat.format(finalBalance.doubleValue()));
+//	
+//	return String.format( date, event, startingBalanceString, finalBalanceString);
+//}
+//
+//// starting balance = before purchase         final balance = after purchase
+//public void logPurchase(Inventory location, Product product, VendingMachine startingBalance, BigDecimal finalBalance) {
+//	String event = product.getName() + " " + location.getLocation();
+//	String entry = BuildLogEntryString(event, startingBalance.getDeposit(), finalBalance);
+//	
+//	printToFile(entry);
+//		}
+//
+//// staring balance = before deposit       final balance after deposit
+//public void logFeed(VendingMachine deposit, BigDecimal finalBalance) {
+//	String event = "FEED MONEY";
+//	String entry = BuildLogEntryString(event, deposit.getDeposit(), finalBalance);
+//	
+//	printToFile(entry);
+//}
+//// final balance = 0
+//public void logChange( BigDecimal changeGiven, BigDecimal finalBalance) {
+//	finalBalance.equals("0.00");
+//	String event = "GIVE CHANGE";
+//	String entry =  BuildLogEntryString(event, changeGiven, finalBalance);
+//	
+//	printToFile(entry);
+//
+//	}
+//
+//
+//
+//private void printToFile(String entry) {
+//	try(FileOutputStream f = new FileOutputStream(output, true);
+//			PrintWriter pw = new PrintWriter(f)){
+//		
+//				pw.println(entry);
+//				pw.flush();
+//	}catch (IOException e) {
+//		System.out.println(e.toString());
+//		System.out.println("File Not Found");
+//		
+//	}
+//			
+//}
+//		
+//}
+	
 }

@@ -9,7 +9,6 @@ public class Vendomatic800 {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		// var
 		String input2;
 		VendingMachine myVendingMachine = new VendingMachine();
 		boolean isMainMenuComplete = false;
@@ -85,6 +84,8 @@ public class Vendomatic800 {
 						String change = myChange.changeInCoins(myVendingMachine.getDeposit());
 						System.out.println(change);
 						myVendingMachine.resetDepositAfterChange();
+						
+						myVendingMachine.giveChangeForLog();
 						
 						isSubMenuComplete = true;
 						isMainMenuComplete = false;

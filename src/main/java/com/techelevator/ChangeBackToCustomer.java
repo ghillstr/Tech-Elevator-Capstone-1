@@ -8,9 +8,12 @@ public class ChangeBackToCustomer {
 	static int dimes;
 	static int nickels;
 	static double customerChange;
+	VendingMachine myVendingMachine = new VendingMachine();
+
 
 	public String changeInCoins(BigDecimal change) {
 		String result = "";
+		
 		customerChange = change.doubleValue() * 100;
 		while (customerChange >= 25) {
 			quarters++;
