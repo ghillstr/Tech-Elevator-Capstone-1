@@ -5,16 +5,16 @@ import java.math.BigDecimal;
 public class ChangeBackToCustomer {
 
 	// Delete this comment
-	static int quarters;
-	static int dimes;
-	static int nickels;
-	static double customerChange;
-	VendingMachine myVendingMachine = new VendingMachine();
+	private int quarters;
+	private int dimes;
+	private int nickels;
+	private double customerChange;
+	
 
 
 	public String changeInCoins(BigDecimal change) {
 		String result = "";
-		
+		if (!change.equals( new BigDecimal ("0"))) {
 		customerChange = change.doubleValue() * 100;
 		while (customerChange >= 25) {
 			quarters++;
@@ -30,6 +30,9 @@ public class ChangeBackToCustomer {
 		}
 
 		result = "Your change is " + quarters + " quarters, " + dimes + " dimes, " + nickels + " nickels.";
+		return result;}
+		else { result = "Your change is 0 quarters, 0 dimes, 0 nickels.";
 		return result;
+		}
 	}
 }
