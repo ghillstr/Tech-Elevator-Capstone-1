@@ -32,6 +32,10 @@ public class Inventory {
 	public String getLocation() {
 		return location;
 	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
