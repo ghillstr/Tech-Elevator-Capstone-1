@@ -76,7 +76,7 @@ public class Menu {
 						
 						if (myVendingMachine.getInventoryMap().containsKey(product)) {
 							System.out.println(myVendingMachine.selectProduct(product));
-
+// THIS IS AN EASTER EGG FOR GEORGE!
 							System.out.println(
 								myVendingMachine.getInventoryMap().get(product).getMyProduct().typeMessage());
 						} else {
