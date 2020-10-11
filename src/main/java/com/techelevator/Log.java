@@ -10,8 +10,8 @@ import java.time.LocalTime;
 
 public class Log {
 
-	public void addToLog (String actionPerformed, BigDecimal fedAmount, BigDecimal balance) {
-
+	public String addToLog (String actionPerformed, BigDecimal fedAmount, BigDecimal balance) {
+		String forTesting = "";
 		LocalDate day = LocalDate.now();
 		LocalTime time = LocalTime.now();
 		try (PrintWriter logger = new PrintWriter(new FileOutputStream(new File("./log.txt"), true))) {
@@ -19,14 +19,20 @@ public class Log {
 			String printDay = day.toString();
 			String printTime = time.toString().substring(0, time.toString().length() - 4);
 			String printActionPerformed = actionPerformed.toString();
-			String printAmount = fedAmount.toString();
-			String printBalance = balance.toString();
+			String printAmount = fedAmount.setScale(2).toString();
+			String printBalance = balance.setScale(2).toString();
+			
 
 			logger.println(printDay + " " + printTime + " " + String.format("%-25s", printActionPerformed)
 					+ String.format("%-10s", "$" + printAmount) + String.format("%-10s", "$" + printBalance));
-
+		forTesting = (printDay + " " + printTime + " " + String.format( printActionPerformed)
+		+ String.format("%-10s", "$" + printAmount) + String.format("%-10s", "$" + printBalance));
+		return	forTesting;
+			
 		} catch (FileNotFoundException e) {
 			e.getMessage();
 		}
-	}
+		return forTesting;
+	} 
+	
 }

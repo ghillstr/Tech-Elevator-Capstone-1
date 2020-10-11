@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 public class VendingMachine {
 
 	private Map<String, Inventory> inventoryMap = new HashMap<>();
-	private BigDecimal deposit = new BigDecimal(0);
+	private BigDecimal deposit = new BigDecimal(0).setScale(2);
 	Log myLog = new Log();
-	BigDecimal startingDepositForLog = new BigDecimal(0);
-	BigDecimal finalDepositForLog = new BigDecimal(0);
+	BigDecimal startingDepositForLog = new BigDecimal(0).setScale(2);
+	BigDecimal finalDepositForLog = new BigDecimal(0).setScale(2);
 	
 	public void setInventory() throws NumberFormatException, FileNotFoundException {	
 		File inputFile = new File("vendingmachine.csv");
