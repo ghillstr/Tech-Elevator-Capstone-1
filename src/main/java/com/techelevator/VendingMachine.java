@@ -190,14 +190,14 @@ public class VendingMachine {
 //		this.cartBalance = cartBalance;
 //	}
 	
-	public List<Product> getSoldProducts() {
-		return soldProducts;
-	}
-
-	public void setSoldProducts(List<Product> soldProducts) {
-		this.soldProducts = soldProducts;
-	}
-	
+//	public List<Product> getSoldProducts() {
+//		return soldProducts;
+//	}
+//
+//	public void setSoldProducts(List<Product> soldProducts) {
+//		this.soldProducts = soldProducts;
+//	}
+//	
 //	Menu main = new Menu("main");
 //	// should contain a list of options
 //	main.addChoices("(1) Option 1");

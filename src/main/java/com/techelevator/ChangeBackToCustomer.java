@@ -4,15 +4,15 @@ import java.math.BigDecimal;
 
 public class ChangeBackToCustomer {
 	
-	static int quarters;
-	static int dimes;
-	static int nickels;
-	static double customerChange;
+	
+	
 	
 	//calculate change in coins and print it out to customer
-	public static String changeInCoins(BigDecimal change) {
-		String result = "";
-		customerChange = change.doubleValue() *100;
+	public double changeInCoins(BigDecimal change) {
+	int quarters = 0;
+	int dimes = 0;
+	int nickels = 0;
+	double customerChange = change.doubleValue() *100;
 	while (customerChange >= 25) {
 		quarters++;
 		customerChange-=25;
@@ -25,9 +25,8 @@ public class ChangeBackToCustomer {
 		nickels++;
 		customerChange-=5;
 	}
-
-	//return Double.toString(customerChange);
-	result = "Your change is "+quarters+" quarters, "+ dimes+" dimes, "+nickels+ " nickels.";
-	return result;
+	return String.customerChange;
+	
+	
 	}
 }
