@@ -12,7 +12,6 @@ public class VendingMachine {
 
 	private Map<String, Inventory> inventoryMap = new HashMap<>();
 	private BigDecimal deposit = new BigDecimal(0);
-
 	public void setInventory() throws NumberFormatException, FileNotFoundException {
 
 		File inputFile = new File("vendingmachine.csv");

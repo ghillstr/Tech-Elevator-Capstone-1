@@ -10,26 +10,34 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import com.techelevator.Product;
+import com.techelevator.VendingMachine;
+import com.techelevator.Inventory;
+import com.techelevator.ChangeBackToCustomer;
 
 public class Logger {
 	
 	private final File output = new File("Log.txt");
 	
-	public void logPurchase(String location, Product product, BigDecimal startingBalance, BigDecimal finalBalance) {
-		String event = Product.getName() + " " + location;
-		String entry = BuildLogEntryString(event, startingBalance, finalBalance);
+	
+	// starting balance = before purchase final balance = after purchase
+	public void logPurchase(Inventory location, Product product, VendingMachine startingBalance, BigDecimal finalBalance) {
+		String event = product.getName() + " " + location.getLocation();
+		String entry = BuildLogEntryString(event, startingBalance.getDeposit(), finalBalance);
 		
 		printToFile(entry);
  		}
 	
-	public void logFeed( BigDecimal amountFed, BigDecimal finalBalance) {
+	// staring balance = before deposit  final balance after deposit
+	public void logFeed( VendingMachine deposit, BigDecimal finalBalance) {
 		String event = "FEED MONEY";
-		String entry = BuildLogEntryString(event, amountFed, finalBalance);
+		String entry = BuildLogEntryString(event, deposit.getDeposit(), finalBalance);
 		
 		printToFile(entry);
 	}
-
+	// final balance = 0
 	public void logChange( BigDecimal changeGiven, BigDecimal finalBalance) {
+		finalBalance.equals("0.00");
 		String event = "GIVE CHANGE";
 		String entry =  BuildLogEntryString(event, changeGiven, finalBalance);
 		
@@ -43,7 +51,7 @@ public class Logger {
 			String startingBalanceString = (numberFormat.format(startingBalance.doubleValue()));
 			String finalBalanceString = (numberFormat.format(finalBalance.doubleValue()));
 			
-			return String.format("%-25s%-25s%-10s%-10s", date, event, startingBalanceString, finalBalanceString);
+			return String.format( date, event, startingBalanceString, finalBalanceString);
 	}
 	
 	private void printToFile(String entry) {
