@@ -69,7 +69,7 @@ public class VendingMachine {
 		String result = "";
 		for (String key : getInventoryMap().keySet()) {
 			Inventory myInventory = getInventoryMap().get(key);
-			result += myInventory.getLocation() + " " + myInventory.getMyProduct().getName() + " " + myInventory.getMyProduct().getPrice() + " " + myInventory.getQuantity() + " in stock";
+			result += myInventory.getLocation() + " " + myInventory.getMyProduct().getName() + " " + myInventory.getMyProduct().getPrice() + " " + myInventory.getQuantity() + " in stock\n";
 		}
 		return result;
 	}
@@ -94,21 +94,23 @@ public class VendingMachine {
 	public void addToCustomerMoney(int moneyInput) {
 		
 		if(moneyInput==1) {
-			getDeposit().add(new BigDecimal(1.00));
+			deposit = deposit.add(new BigDecimal(1.00));
 		}else if(moneyInput==2) {
-			getDeposit().add(new BigDecimal(2.00));
-			}else if(moneyInput==5) {
-			getDeposit().add(new BigDecimal(5.00));
-			}else if(moneyInput==10) {
-			getDeposit().add(new BigDecimal(10.00));
-			}
+			deposit = deposit.add(new BigDecimal(2.00));
+		}else if(moneyInput==5) {
+			deposit = deposit.add(new BigDecimal(5.00));
+		}else if(moneyInput==10) {
+			deposit = deposit.add(new BigDecimal(10.00));
+		} else {
+			System.out.println("Please insert bills in denominations of $1, $2, $5, or $10.");
+		}
 		
-		System.out.println("Your balance is "+ deposit+", whatwould you like to purchase?");
+		System.out.println("Your balance is $"+ deposit +".");
 		//logger.addToLog("FEED MONEY:", new BigDecimal(moneyInput), getDeposit());
 		}
 	
-	public void selectProduct (String selectedProduct) {
-		
+	public String selectProduct (String selectedProduct) {
+		String result = "";
 		String selectedProductQuantity = getInventoryMap().get(selectedProduct).getQuantity();
 		BigDecimal selectedProductPrice = getInventoryMap().get(selectedProduct).getMyProduct().getPrice();
 		Product temp = getInventoryMap().get(selectedProduct).getMyProduct();
@@ -136,18 +138,19 @@ public class VendingMachine {
 
 			cart.add(getStock().get(selectedItem).getMyItem());
 			 */
-			
-			System.out.println( "You have purchased one " + getInventoryMap().get(selectedProduct).getMyProduct().getName() + ". Your remaining balance is $" + getDeposit());
-			temp.typeMessage();
+			result = getInventoryMap().get(selectedProduct).getMyProduct().getName();
+//			System.out.println( "You have purchased one " + getInventoryMap().get(selectedProduct).getMyProduct().getName() + ". Your remaining balance is $" + getDeposit());
+//			temp.typeMessage();
 			
 			
 		} else if (getInventoryMap().containsKey(selectedProduct.toUpperCase()) && selectedProductQuantity.equals("Sold out!")) {
-			System.out.println( "Sorry, this item is sold out. Please select another item.");
+			result = "Sorry, this item is sold out. Please select another item.";
 		} else if (getDeposit().compareTo(selectedProductPrice) < 0) {
-			System.out.println ("Sorry, you do not have enough money to purchase this product. Please enter another selection or feed more money.");
+			result = "Sorry, you do not have enough money to purchase this product. Please enter another selection or feed more money.";
 		} else {
-			System.out.println( "Sorry, that is not a valid selection. Please make another selection.");	
+			result = "Sorry, that is not a valid selection. Please make another selection.";	
 		}
+	return result;
 	}
 
 

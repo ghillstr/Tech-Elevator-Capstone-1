@@ -16,18 +16,20 @@ public class Product {
 		this.type = type;
 	}
 
-	public void typeMessage () {
+	public String typeMessage () {
+		String result;
 		if (type.equals("Chip")) {
-			System.out.println( "Crunch Crunch, Yum!");
+			result = "Crunch Crunch, Yum!";
 		} else if (type.equals("Gum")) {
-			System.out.println( "Chew Chew, Yum!");
+			result = "Chew Chew, Yum!";
 		} else if (type.equals("Drink")) {
-			System.out.println("Glug Glug, Yum!");
+			result = "Glug Glug, Yum!";
 		} else if (type.equals("Candy")) {
-			System.out.println( "Munch Munch, Yum!");
+			result = "Munch Munch, Yum!";
 		} else {
-			System.out.println( "");
+			result = "";
 		}
+		return result;
 	}
 	
 	// Override the toString method so we can print array elements in main method
