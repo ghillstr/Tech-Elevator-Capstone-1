@@ -13,12 +13,14 @@ import com.techelevator.Log;
 public class LogTest {
 
 	private Log log;
+	
 
 	@Before
 	public void Log() {
 		log = new Log();
 
 	}
+	
 
 	@Test
 	public void feed_money() {
@@ -33,10 +35,10 @@ public class LogTest {
 	@Test
 	public void give_change() {
 		Log();
-		String output = log.addToLog("GIVE CHANGE", new BigDecimal(2.00), new BigDecimal(0.00));
+		String output = log.addToLog("GIVE CHANGE:", new BigDecimal(2.00), new BigDecimal(0.00));
 		LocalTime time = LocalTime.now();
 		String printTime = time.toString().substring(0, time.toString().length() - 4);
-		Assert.assertEquals(LocalDate.now() + " " + printTime + " " + String.format("GIVE CHANGE")
+		Assert.assertEquals(LocalDate.now() + " " + printTime + " " + String.format("GIVE CHANGE:")
 				+ String.format("%-10s", "$" + "2.00") + String.format("%-10s", "$" + "0.00"), output);
 	}
 
@@ -49,4 +51,7 @@ public class LogTest {
 		Assert.assertEquals(LocalDate.now() + " " + printTime + " " + String.format("Wonka BarB3")
 				+ String.format("%-10s", "$" + "10.00") + String.format("%-10s", "$" + "8.50"), output);
 	}
-}
+}	
+    
+	
+	
