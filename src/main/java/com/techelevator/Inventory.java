@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 public class Inventory {
 
-	// Delete this comment
 	private Product myProduct;
 	private int quantity = 5;
 	private String location;
@@ -32,6 +31,10 @@ public class Inventory {
 
 	public String getLocation() {
 		return location;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }

@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.math.BigDecimal;
 
-// Delete this comment
-
 public class VendingMachine {
 
 	private Map<String, Inventory> inventoryMap = new HashMap<>();
@@ -50,10 +48,13 @@ public class VendingMachine {
 			deposit = zero;
 	}
 
-	public BigDecimal addToCustomerMoney(int moneyInput) {
+	public String addToCustomerMoney(int moneyInput) {
 		String actionPerformed = "FEED MONEY:";
 		
-		if (moneyInput == 1) {
+		try {
+		if(moneyInput != 1 && moneyInput != 2 && moneyInput != 5 && moneyInput != 10) {
+			System.out.println("Please insert bills in denominations of $1, $2, $5, or $10.");
+		} else if (moneyInput == 1) {
 			deposit = deposit.add(new BigDecimal(1.00));
 			myLog.addToLog(actionPerformed, new BigDecimal(1.00), deposit);
 		} else if (moneyInput == 2) {
@@ -67,11 +68,14 @@ public class VendingMachine {
 			myLog.addToLog(actionPerformed, new BigDecimal(10.00), deposit);
 		} else {
 			System.out.println("Please insert bills in denominations of $1, $2, $5, or $10.");
-		}
-		
+		}      
+		} catch (NumberFormatException e) {
+	        e.getMessage(); 
+	      }
+
 		System.out.println("Your balance is $" + deposit + ".");
 		startingDepositForLog = deposit;
-		return startingDepositForLog;
+		return startingDepositForLog.toString();
 	}
 
 	public String selectProduct(String selectedProduct) {
@@ -89,7 +93,7 @@ public class VendingMachine {
 			deposit = deposit.subtract(selectedProductPrice);
 
 			result = "You have purchased one " + getInventoryMap().get(selectedProduct).getMyProduct().getName()
-					+ " at a cost of $" + selectedProductPrice + ". Your remaining balance is $" + getDeposit();
+					+ " at a cost of $" + selectedProductPrice + ". Your remaining balance is $" + getDeposit() + ".";
 
 			myLog.addToLog(actionPerformed, startingDepositForLog, deposit);
 			finalDepositForLog = deposit;
@@ -99,8 +103,6 @@ public class VendingMachine {
 			result = "Sorry, this item is sold out. Please select another item.";
 		} else if (getDeposit().compareTo(selectedProductPrice) < 0) {
 			result = "Sorry, you do not have enough money to purchase this product. Please enter another selection or feed more money.";
-		} else {
-			result = "Sorry, that is not a valid selection. Please make another selection.";
 		}
 		return result;
 	}

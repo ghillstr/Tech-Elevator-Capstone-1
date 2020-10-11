@@ -4,13 +4,12 @@ import java.util.Scanner;
 import com.techelevator.VendingMachine;
 import com.techelevator.ChangeBackToCustomer;
 import java.io.FileNotFoundException;
+import java.lang.NumberFormatException;
 
 public class Vendomatic800 {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		// Delete this comment
-		
 		String input2;
 		VendingMachine myVendingMachine = new VendingMachine();
 		boolean isMainMenuComplete = false;
@@ -60,12 +59,16 @@ public class Vendomatic800 {
 					input2 = keyboard.nextLine();
 
 					if (input2.equals("1")) {
-						System.out.print("Please insert money >>> : $");
-						input2 = keyboard.nextLine();
-						int money = Integer.parseInt(input2);
-
-						if (money > 0) {
-							myVendingMachine.addToCustomerMoney(money);
+						try {
+							System.out.print("Please insert money >>> : $");
+							input2 = keyboard.nextLine();
+							int money = Integer.parseInt(input2);
+							if (money > 0) {
+								myVendingMachine.addToCustomerMoney(money);
+							}
+						} catch (NumberFormatException e) {
+							e.getMessage();
+							System.out.println("Please insert bills in denominations of $1, $2, $5, or $10.");
 						}
 						isSubMenuComplete = false;
 
@@ -73,11 +76,11 @@ public class Vendomatic800 {
 						System.out.println(myVendingMachine.displayProduct());
 						System.out.print("\nEnter selection here >>> ");
 						product = keyboard.nextLine().toUpperCase();
-						
+
 						if (myVendingMachine.getInventoryMap().containsKey(product)) {
 							System.out.println(myVendingMachine.selectProduct(product));
 							System.out.println(
-								myVendingMachine.getInventoryMap().get(product).getMyProduct().typeMessage());
+									myVendingMachine.getInventoryMap().get(product).getMyProduct().typeMessage());
 						} else {
 							System.out.println("Try again");
 						}
@@ -86,15 +89,15 @@ public class Vendomatic800 {
 						String change = myChange.changeInCoins(myVendingMachine.getDeposit());
 						System.out.println(change);
 						myVendingMachine.resetDepositAfterChange();
-						
+
 						myVendingMachine.giveChangeForLog();
-						
+
 						isSubMenuComplete = true;
 						isMainMenuComplete = false;
 					} else {
 						System.out.println("Please enter a valid option number (1, 2, or 3) >>> ");
 						isSubMenuComplete = false;
-					
+
 					}
 				}
 			}
