@@ -12,6 +12,7 @@ public class Log {
 
 	public void addToLog (String actionPerformed, BigDecimal fedAmount, BigDecimal balance) {
 
+		// Delete this comment
 		LocalDate day = LocalDate.now();
 		LocalTime time = LocalTime.now();
 		try (PrintWriter logger = new PrintWriter(new FileOutputStream(new File("./log.txt"), true))) {

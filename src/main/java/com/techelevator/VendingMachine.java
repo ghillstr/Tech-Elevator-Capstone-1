@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.math.BigDecimal;
 
+// Delete this comment
+
 public class VendingMachine {
 
 	private Map<String, Inventory> inventoryMap = new HashMap<>();

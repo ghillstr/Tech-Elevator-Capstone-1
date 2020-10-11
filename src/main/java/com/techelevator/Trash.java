@@ -3,6 +3,8 @@ package com.techelevator;
 public class Trash {
 
 
+	// Delete this comment
+	
 //	public void setDeposit(BigDecimal customerBalance) {
 //		this.deposit = deposit;
 //	}

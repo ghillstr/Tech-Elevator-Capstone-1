@@ -9,6 +9,8 @@ public class Product {
 	private BigDecimal price;
 	private String type;
 	
+	// Delete this comment
+	
 	//constructor
 	public Product (String name, BigDecimal price, String type) {	
 		this.name = name;

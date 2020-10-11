@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class ChangeBackToCustomer {
 
+	// Delete this comment
 	static int quarters;
 	static int dimes;
 	static int nickels;

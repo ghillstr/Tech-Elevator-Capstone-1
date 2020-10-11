@@ -9,6 +9,8 @@ public class Vendomatic800 {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
+		// Delete this comment
+		
 		String input2;
 		VendingMachine myVendingMachine = new VendingMachine();
 		boolean isMainMenuComplete = false;
