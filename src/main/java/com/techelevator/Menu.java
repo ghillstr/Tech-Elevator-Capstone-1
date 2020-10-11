@@ -45,6 +45,8 @@ public class Menu {
 					System.exit(1);
 				} else {
 					System.out.println("Please enter a valid option number (1, 2, or 3) >>> ");
+					isMainMenuComplete = false;
+					isSubMenuComplete = true;
 				}
 
 				while (!isSubMenuComplete) {
@@ -74,7 +76,9 @@ public class Menu {
 						
 						if (myVendingMachine.getInventoryMap().containsKey(product)) {
 							System.out.println(myVendingMachine.selectProduct(product));
-							
+
+							System.out.println(
+								myVendingMachine.getInventoryMap().get(product).getMyProduct().typeMessage());
 						} else {
 							System.out.println("Try again");
 						}
@@ -83,12 +87,14 @@ public class Menu {
 //			ChangeBackToCustomer myChange = new ChangeBackToCustomer();
 						String change = myChange.changeInCoins(myVendingMachine.getDeposit());
 						System.out.println(change);
-						System.out.println(
-								myVendingMachine.getInventoryMap().get(product).getMyProduct().typeMessage());
+						myVendingMachine.resetDepositAfterChange();
+						
 						isSubMenuComplete = true;
 						isMainMenuComplete = false;
 					} else {
 						System.out.println("Please enter a valid option number (1, 2, or 3) >>> ");
+						isSubMenuComplete = false;
+					
 					}
 				}
 			}

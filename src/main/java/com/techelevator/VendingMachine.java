@@ -17,7 +17,7 @@ public class VendingMachine {
 	//private List<Product> cart = new ArrayList<Product>();
 	private Map<String, Inventory> inventoryMap = new HashMap<>();
 	private BigDecimal deposit = new BigDecimal(0);
-	private BigDecimal cartBalance = new BigDecimal(0);
+	private BigDecimal machineBalance = new BigDecimal(0);
 	private List<Product> soldProduct = new ArrayList<Product> ();
 	
 	
@@ -91,6 +91,12 @@ public class VendingMachine {
 		logger.addToLog("FEED MONEY:", new BigDecimal(input), getTransactionBalance());
 	}
 	}*/
+	public void resetDepositAfterChange () {
+		BigDecimal zero = BigDecimal.ZERO;
+		if (deposit.compareTo(zero) > 0)
+	        deposit = zero;
+	}
+	
 	public void addToCustomerMoney(int moneyInput) {
 		
 		if(moneyInput==1) {
@@ -121,13 +127,11 @@ public class VendingMachine {
 			
 			getInventoryMap().get(selectedProduct).decreaseInventory();
 			
-			setDeposit(getDeposit().subtract(selectedProductPrice));
-			
-		
+			deposit = deposit.subtract(selectedProductPrice);
 			
 			//PRINT THE MESSAGE YUM YUM
 			
-			//cartBalance = cartBalance.add(selectedProductPrice);
+			machineBalance = machineBalance.subtract(selectedProductPrice);
 			
 			// connect to logger here
 			/*
@@ -138,8 +142,7 @@ public class VendingMachine {
 
 			cart.add(getStock().get(selectedItem).getMyItem());
 			 */
-			result = getInventoryMap().get(selectedProduct).getMyProduct().getName();
-//			System.out.println( "You have purchased one " + getInventoryMap().get(selectedProduct).getMyProduct().getName() + ". Your remaining balance is $" + getDeposit());
+			result = "You have purchased one " + getInventoryMap().get(selectedProduct).getMyProduct().getName() + " at a cost of $" + selectedProductPrice + ". Your remaining balance is $" + getDeposit();
 //			temp.typeMessage();
 			
 			
