@@ -36,9 +36,4 @@ public class Inventory {
 		this.quantity = quantity;
 	}
 
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 }

@@ -82,10 +82,6 @@ public class VendingMachine {
 		} catch (NumberFormatException e) {
 	        e.getMessage(); 
 	      }
-
-		System.out.println("Your balance is $" + deposit + ".");
-		startingDepositForLog = deposit;
-		}
 		
 		System.out.println("Your balance is $" + deposit.setScale(2) + ".");
 		startingDepositForLog =deposit.setScale(2);
