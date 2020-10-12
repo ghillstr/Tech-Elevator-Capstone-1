@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.math.BigDecimal;
 
+// Delete this comment
+
 public class VendingMachine {
 
 	private Map<String, Inventory> inventoryMap = new HashMap<>();
@@ -16,9 +18,19 @@ public class VendingMachine {
 	BigDecimal startingDepositForLog = new BigDecimal(0).setScale(2);
 	BigDecimal finalDepositForLog = new BigDecimal(0).setScale(2);
 	
+	
+	
+	
 	public void setInventory() throws NumberFormatException, FileNotFoundException {	
 		File inputFile = new File("vendingmachine.csv");
-		try (Scanner fileScanner = new Scanner(inputFile)) {
+		
+		if(inputFile.exists() == false) { 
+			System.out.println("vendingmachine.csv"+" does not exist");
+			System.exit(1); 
+		} else if(inputFile.isFile() == false) {
+			System.out.println("vendingmachine.csv"+" is not a file");
+			System.exit(1); 
+		}else {try (Scanner fileScanner = new Scanner(inputFile)) {
 			while (fileScanner.hasNextLine()) {
 				String line = fileScanner.nextLine();
 				if (!line.isEmpty()) {
@@ -29,7 +41,7 @@ public class VendingMachine {
 
 				}
 			}
-		}
+		}}
 	}
 
 	public String displayProduct() {
@@ -48,28 +60,28 @@ public class VendingMachine {
 			deposit = zero;
 	}
 
-	public BigDecimal addToCustomerMoney(int moneyInput) {
+	public String addToCustomerMoney(int moneyInput) {
 		String actionPerformed = "FEED MONEY:";
 		
 		if (moneyInput == 1) {
 			deposit = deposit.add(new BigDecimal(1.00));
-			myLog.addToLog(actionPerformed, new BigDecimal(1.00), deposit);
+			myLog.addToLog(actionPerformed, new BigDecimal(1.00), deposit.setScale(2));
 		} else if (moneyInput == 2) {
 			deposit = deposit.add(new BigDecimal(2.00));
-			myLog.addToLog(actionPerformed, new BigDecimal(2.00), deposit);
+			myLog.addToLog(actionPerformed, new BigDecimal(2.00), deposit.setScale(2));
 		} else if (moneyInput == 5) {
 			deposit = deposit.add(new BigDecimal(5.00));
-			myLog.addToLog(actionPerformed, new BigDecimal(5.00), deposit);
+			myLog.addToLog(actionPerformed, new BigDecimal(5.00), deposit.setScale(2));
 		} else if (moneyInput == 10) {
 			deposit = deposit.add(new BigDecimal(10.00));
-			myLog.addToLog(actionPerformed, new BigDecimal(10.00), deposit);
+			myLog.addToLog(actionPerformed, new BigDecimal(10.00), deposit.setScale(2));
 		} else {
 			System.out.println("Please insert bills in denominations of $1, $2, $5, or $10.");
 		}
 		
-		System.out.println("Your balance is $" + deposit + ".");
-		startingDepositForLog = deposit;
-		return startingDepositForLog;
+		System.out.println("Your balance is $" + deposit.setScale(2) + ".");
+		startingDepositForLog =deposit.setScale(2);
+		return startingDepositForLog.toString();
 	}
 
 	public String selectProduct(String selectedProduct) {

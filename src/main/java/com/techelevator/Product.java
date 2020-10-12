@@ -9,6 +9,8 @@ public class Product {
 	private BigDecimal price;
 	private String type;
 	
+	// Delete this comment
+	
 	//constructor
 	public Product (String name, BigDecimal price, String type) {	
 		this.name = name;
@@ -35,7 +37,7 @@ public class Product {
 	// Override the toString method so we can print array elements in main method
 	@Override
     public String toString() { 
-        return this.name + " $" + this.price; 
+        return this.name + " $" + this.price + " " + this.type; 
     }
 	
 	public String getName() {
