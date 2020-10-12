@@ -14,6 +14,10 @@ public class Inventory {
 		this.location = location;
 		myProduct = new Product (name, price, type);
 	}
+	@Override
+    public String toString() { 
+        return this.location + " " + myProduct; 
+    }
 	
 	public void decreaseInventory () {
 		quantity -= 1;
