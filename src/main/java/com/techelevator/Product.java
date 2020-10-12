@@ -8,14 +8,14 @@ public class Product {
 	private String name;
 	private BigDecimal price;
 	private String type;
-	
-	public Product (String name, BigDecimal price, String type) {	
+
+	public Product(String name, BigDecimal price, String type) {
 		this.name = name;
 		this.price = price;
 		this.type = type;
 	}
 
-	public String typeMessage () {
+	public String typeMessage() {
 		String result;
 		if (type.equals("Chip")) {
 			result = "Crunch Crunch, Yum!";
@@ -32,10 +32,10 @@ public class Product {
 	}
 
 	@Override
-    public String toString() { 
-        return this.name + " $" + this.price + " " + this.type; 
-    }
-	
+	public String toString() {
+		return this.name + " $" + this.price + " " + this.type;
+	}
+
 	public String getName() {
 		return name;
 	}

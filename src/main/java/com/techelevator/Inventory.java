@@ -7,17 +7,13 @@ public class Inventory {
 	private Product myProduct;
 	private int quantity = 5;
 	private String location;
-	
-	public Inventory (String location, String name, BigDecimal price, String type) {
+
+	public Inventory(String location, String name, BigDecimal price, String type) {
 		this.location = location;
-		myProduct = new Product (name, price, type);
+		myProduct = new Product(name, price, type);
 	}
-	@Override
-    public String toString() { 
-        return this.location + " " + myProduct; 
-    }
-	
-	public void decreaseInventory () {
+
+	public void decreaseInventory() {
 		quantity -= 1;
 	}
 
@@ -36,6 +32,7 @@ public class Inventory {
 	public String getLocation() {
 		return location;
 	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
