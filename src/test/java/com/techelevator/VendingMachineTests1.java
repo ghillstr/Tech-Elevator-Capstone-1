@@ -1,4 +1,4 @@
-package com.techelevator.view;
+package com.techelevator;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -41,10 +41,7 @@ public class VendingMachineTests1 {
 	    	 Assert.assertEquals(BigDecimal.valueOf(10.00), output);
 	     }
 	     
-	     @Test 
-	     public void final_deposit() {
-	    	 vendo = new VendingMAchine();
-	     }
+	     
 	
 	
 

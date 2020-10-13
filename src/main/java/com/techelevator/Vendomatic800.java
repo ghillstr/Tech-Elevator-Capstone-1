@@ -58,18 +58,26 @@ public class Vendomatic800 {
 					System.out.println("(3) Finish transaction");
 					System.out.print("\nEnter selection here >>> ");
 					input2 = keyboard.nextLine();
-
+					
+					
+					
 					if (input2.equals("1")) {
+						try {
 						System.out.print("Please insert money >>> : $");
 						input2 = keyboard.nextLine();
 						int money = Integer.parseInt(input2);
 
 						if (money > 0) {
 							myVendingMachine.addToCustomerMoney(money);
+							}
+						} catch (NumberFormatException e) {
+							e.getMessage();
+							System.out.println("Please insert bills in denominations of $1, $2, $5, or $10.");
 						}
 						isSubMenuComplete = false;
 
 					} else if (input2.equals("2")) {
+						
 						System.out.println(myVendingMachine.displayProduct());
 						System.out.print("\nEnter selection here >>> ");
 						product = keyboard.nextLine().toUpperCase();

@@ -6,13 +6,13 @@ public class Inventory {
 
 
 
-	private Product myProduct;
+	private Item myProduct;
 	private int quantity = 5;
 	private String location;
 	
 	public Inventory (String location, String name, BigDecimal price, String type) {
 		this.location = location;
-		myProduct = new Product (name, price, type);
+		myProduct = new Item (name, price, type);
 	}
 	@Override
     public String toString() { 
@@ -23,7 +23,7 @@ public class Inventory {
 		quantity -= 1;
 	}
 
-	public Product getMyProduct() {
+	public Item getMyProduct() {
 		return myProduct;
 	}
 

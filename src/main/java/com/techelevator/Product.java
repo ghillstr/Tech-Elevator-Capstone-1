@@ -2,37 +2,39 @@ package com.techelevator;
 
 import java.math.BigDecimal;
 
-public class Product {
+public abstract class Product extends VendingMachine {
 
 	//var
 	private String name;
 	private BigDecimal price;
-	private String type;
+	protected String type;
 	
 	// Delete this comment
 	
 	//constructor
-	public Product (String name, BigDecimal price, String type) {	
+	public Product (String name, BigDecimal price) {	
 		this.name = name;
 		this.price = price;
-		this.type = type;
+		
 	}
 
-	public String typeMessage () {
-		String result;
-		if (type.equals("Chip")) {
-			result = "Crunch Crunch, Yum!";
-		} else if (type.equals("Gum")) {
-			result = "Chew Chew, Yum!";
-		} else if (type.equals("Drink")) {
-			result = "Glug Glug, Yum!";
-		} else if (type.equals("Candy")) {
-			result = "Munch Munch, Yum!";
-		} else {
-			result = "";
-		}
-		return result;
-	}
+	public abstract String typeMessage(); 
+	
+		
+//		String result;
+//		if (type.equals("Chip")) {
+//			result = "Crunch Crunch, Yum!";
+//		} else if (type.equals("Gum")) {
+//			result = "Chew Chew, Yum!";
+//		} else if (type.equals("Drink")) {
+//			result = "Glug Glug, Yum!";
+//		} else if (type.equals("Candy")) {
+//			result = "Munch Munch, Yum!";
+//		} else {
+//			result = "";
+//		}
+//		return result;
+//	}
 	
 	// Override the toString method so we can print array elements in main method
 	@Override
@@ -47,9 +49,9 @@ public class Product {
 	public BigDecimal getPrice() {
 		return price;
 	}
+//
+//	public String getType() {
+//		return type;
 
-	public String getType() {
-		return type;
-
-	}
+//	}
 }
