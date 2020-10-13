@@ -13,14 +13,12 @@ import com.techelevator.Log;
 public class LogTest {
 
 	private Log log;
-	
 
 	@Before
 	public void Log() {
 		log = new Log();
 
 	}
-	
 
 	@Test
 	public void feed_money() {
@@ -51,7 +49,4 @@ public class LogTest {
 		Assert.assertEquals(LocalDate.now() + " " + printTime + " " + String.format("Wonka BarB3")
 				+ String.format("%-10s", "$" + "10.00") + String.format("%-10s", "$" + "8.50"), output);
 	}
-}	
-    
-	
-	
+}
